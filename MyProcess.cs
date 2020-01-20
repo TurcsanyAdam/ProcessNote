@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+
 using System.Text;
 
 namespace ProcessNote
@@ -8,48 +8,41 @@ namespace ProcessNote
     public class MyProcess
     {
         public int ItemId { get; private set; }
-        public long CpuUsage { get; private set; }
+        public string ItemName { get; private set; }
+        public TimeSpan CpuUsage { get; private set; }
         public long MemoryUsage { get; private set; }
         public TimeSpan RunnigTime { get; private set; }
         public DateTime StartTime { get; private set; }
         public int ThreadCount { get; private set; }
+        public string Comment { get; set; }
+        
 
-        private Ilogger logger;
-
-        public MyProcess(int aItemId,long aCpuUsage, long aMemoryUsage, TimeSpan aRunningTime, DateTime aStartTime, int aThreadCount, Ilogger logger)
+        public MyProcess(int aItemId, string Name, TimeSpan aCpuUsage, long aMemoryUsage, TimeSpan aRunningTime, DateTime aStartTime, int aThreadCount, string Comment)
         {
             ItemId = aItemId;
+            ItemName = Name;
             CpuUsage = aCpuUsage;
             MemoryUsage = aMemoryUsage;
             RunnigTime = aRunningTime;
             StartTime = aStartTime;
             ThreadCount = aThreadCount;
-            this.logger = logger;
+            this.Comment = Comment;
+
         }
 
 
-        //item.Id
-        //WorkingSet64
-        //StartTime
-        //TotalProcessorTime
-        //ProcessName
-        public static void GetRunningProcesses()
+        public override string ToString()
         {
-            Process[] localAll = Process.GetProcesses();
-            foreach (Process item in localAll)
-            {
-                
-                Console.WriteLine( item.Id + " " + item.ProcessName + " " + (item.WorkingSet64 / 1048576) );
-                
-            }
-            Console.WriteLine("Choose a process id: ");
-            int procesid = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine(Process.GetProcessById(procesid).ProcessName);
-
-
-
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"id = {ItemId}, Name = {ItemName}, Cpu Usage = {CpuUsage.TotalMilliseconds}, Memory usage = {MemoryUsage / 1024}Kb," +
+                      $"Running Time = { RunnigTime.TotalMilliseconds}, Start Time = {StartTime}, Thread(s) = {ThreadCount}");
+            return sb.ToString();
         }
+
 
 
     }
+
+
+    
 }

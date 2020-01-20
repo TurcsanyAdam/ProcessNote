@@ -4,10 +4,12 @@ namespace ProcessNote
 {
     class Program
     {
+        static ConsoleLogger cl = new ConsoleLogger();
         static void Main(string[] args)
         {
-            MyProcess.GetRunningProcesses();
-            XmlHandler.WriteToXml();
+            ProcessHandler Ph = new ProcessHandler(cl);
+            Ph.ListProcess();
+            
 
         }
     }
