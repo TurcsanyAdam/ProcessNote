@@ -6,7 +6,7 @@ namespace ProcessNote
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            MyProcess.GetRunningProcesses();
         }
     }
 }
