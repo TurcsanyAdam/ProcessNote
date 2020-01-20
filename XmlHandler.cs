@@ -11,16 +11,24 @@ namespace ProcessNote
         public static void WriteToXml()
         {
             Process[] localAll = Process.GetProcesses();
-            XmlWriter xmlWriter = XmlWriter.Create("..//..//..//test.xml");
+            XmlWriter xmlWriter = XmlWriter.Create("..//..//..//allprocessdata.xml");
             xmlWriter.WriteStartDocument();
 
             xmlWriter.WriteStartElement("processes");
 
             foreach (Process item in localAll)
             {
-                xmlWriter.WriteStartElement("process");
-                xmlWriter.WriteAttributeString("ID", Convert.ToString(item.Id));
-                xmlWriter.WriteEndElement();
+                if(item.Id != 0)
+                {
+                    xmlWriter.WriteStartElement(item.ProcessName.Replace(" ", ""));
+                    xmlWriter.WriteAttributeString("ID", Convert.ToString(item.Id));
+                    xmlWriter.WriteAttributeString("MemoryUsage", Convert.ToString(item.WorkingSet64 / 1024));
+                    xmlWriter.WriteAttributeString("StartTime", Convert.ToString(item.StartTime));
+                    xmlWriter.WriteAttributeString("ThreadCount", Convert.ToString(item.Threads.Count));
+                    xmlWriter.WriteAttributeString("Comment", "");
+                    xmlWriter.WriteEndElement();
+                }
+
 
 
             }
