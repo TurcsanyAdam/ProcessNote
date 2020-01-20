@@ -6,8 +6,8 @@ namespace ProcessNote
     {
         static void Main(string[] args)
         {
-            MyProcess.GetRunningProcesses();
-            XmlHandler.WriteToXml();
+            MenuHandler menu = new MenuHandler();
+            menu.Menu();
 
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 
 namespace ProcessNote
@@ -33,7 +34,7 @@ namespace ProcessNote
         //StartTime
         //TotalProcessorTime
         //ProcessName
-        public static void GetRunningProcesses()
+        public static void GetRunningProcesses(int name)
         {
             Process[] localAll = Process.GetProcesses();
             foreach (Process item in localAll)
@@ -42,9 +43,15 @@ namespace ProcessNote
                 Console.WriteLine( item.Id + " " + item.ProcessName + " " + (item.WorkingSet64 / 1048576) );
                 
             }
-            Console.WriteLine("Choose a process id: ");
-            int procesid = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine(Process.GetProcessById(procesid).ProcessName);
+
+            /* IEnumerable<Process> processes = localAll.Where(s => s.Id == name); 
+             foreach(Process process in processes)
+             {
+                 Console.WriteLine(process.Id);
+             }*/
+             Console.WriteLine("Choose a process id: ");
+             int procesid = Convert.ToInt32(Console.ReadLine());
+             Console.WriteLine(Process.GetProcessById(procesid).ProcessName);
 
 
 
