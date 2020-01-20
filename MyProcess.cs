@@ -7,6 +7,27 @@ namespace ProcessNote
 {
     public class MyProcess
     {
+        public int ItemId { get; private set; }
+        public long CpuUsage { get; private set; }
+        public long MemoryUsage { get; private set; }
+        public TimeSpan RunnigTime { get; private set; }
+        public DateTime StartTime { get; private set; }
+        public int ThreadCount { get; private set; }
+
+        private Ilogger logger;
+
+        public MyProcess(int aItemId,long aCpuUsage, long aMemoryUsage, TimeSpan aRunningTime, DateTime aStartTime, int aThreadCount, Ilogger logger)
+        {
+            ItemId = aItemId;
+            CpuUsage = aCpuUsage;
+            MemoryUsage = aMemoryUsage;
+            RunnigTime = aRunningTime;
+            StartTime = aStartTime;
+            ThreadCount = aThreadCount;
+            this.logger = logger;
+        }
+
+
         //item.Id
         //WorkingSet64
         //StartTime
@@ -28,5 +49,7 @@ namespace ProcessNote
 
 
         }
+
+
     }
 }

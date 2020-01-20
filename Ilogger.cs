@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ProcessNote
 {
-    interface Ilogger
+    public interface Ilogger
     {
         void Info(string message);
 

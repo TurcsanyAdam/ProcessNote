@@ -7,6 +7,7 @@ namespace ProcessNote
         static void Main(string[] args)
         {
             MyProcess.GetRunningProcesses();
+            XmlHandler.WriteToXml();
 
         }
     }
