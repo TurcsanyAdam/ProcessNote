@@ -6,8 +6,8 @@ namespace ProcessNote
 {
     interface Ilogger
     {
-        public void Info(string message);
+        void Info(string message);
 
-        public void Error(string message);
+        void Error(string message);
     }
 }
