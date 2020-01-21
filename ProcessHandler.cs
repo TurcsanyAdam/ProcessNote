@@ -58,7 +58,13 @@ namespace ProcessNote
             if (searchedIdBool)
             {
                 Process searchedProcess = Process.GetProcessById(searchedId);
-                processLogger.Info($" ID = {searchedProcess.Id} Name = {searchedProcess.ProcessName}");
+                processLogger.Info($" ID = {searchedProcess.Id}" +
+                                   $" Name = {searchedProcess.ProcessName}" +
+                                   $" Cpu Usage = {searchedProcess.TotalProcessorTime.TotalMilliseconds}" +
+                                   $" Memory usage = {searchedProcess.WorkingSet64 / 1024}Kb" +
+                                   $" Running Time = { searchedProcess.UserProcessorTime.TotalMilliseconds}" +
+                                   $" Start Time = {searchedProcess.StartTime}" +
+                                   $" Thread(s) = {searchedProcess.Threads.Count}");
                 return searchedProcess;
             }
             else
