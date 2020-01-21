@@ -17,7 +17,7 @@ namespace ProcessNote
 
         public void Error(string message)
         {
-            string error = "Error ";
+            string error = "ERROR ";
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write(error);
             Console.ForegroundColor = ConsoleColor.Gray;
@@ -26,7 +26,7 @@ namespace ProcessNote
 
         public void UserInput(string message)
         {
-            string input = "INPUT";
+            string input = "INPUT ";
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write(input);
             Console.ForegroundColor = ConsoleColor.Gray;
