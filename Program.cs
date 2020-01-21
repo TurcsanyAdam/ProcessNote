@@ -8,7 +8,7 @@ namespace ProcessNote
         static void Main(string[] args)
         {
             MenuHandler menu = new MenuHandler(cl);
-            menu.Menu();
+            menu.StartMenu();
             
 
         }

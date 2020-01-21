@@ -12,13 +12,13 @@ namespace ProcessNote
     [Serializable()]
     public class MyProcess: ISerializable
     {
-        public int ItemId { get; private set; }
-        public string ItemName { get; private set; }
-        public TimeSpan CpuUsage { get; private set; }
-        public long MemoryUsage { get; private set; }
-        public TimeSpan RunnigTime { get; private set; }
-        public DateTime StartTime { get; private set; }
-        public int ThreadCount { get; private set; }
+        public int ItemId { get; set; }
+        public string ItemName { get; set; }
+        public TimeSpan CpuUsage { get; set; }
+        public long MemoryUsage { get; set; }
+        public TimeSpan RunnigTime { get; set; }
+        public DateTime StartTime { get; set; }
+        public int ThreadCount { get; set; }
         public string Comment { get; set; }
         
 

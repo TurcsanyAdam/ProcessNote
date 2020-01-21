@@ -14,6 +14,32 @@ namespace ProcessNote
         {
             MhLogger = logger;
         }
+
+        public void StartMenu()
+        {
+            while (true)
+            {
+                string menu =
+                "1 - Working with currently running processes\n" +
+                "2 - Working from XML\n" +
+                "3 - Exit programme";
+                Console.WriteLine(menu);
+                Console.Write("Enter a number to navigate the menu: ");
+                int userChocie = int.Parse(Console.ReadLine());
+
+                switch (userChocie)
+                {
+                    case 1:
+                        Menu();
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        Environment.Exit(0);
+                        break;
+                }
+            }
+        }
         public void Menu()
         {
 
@@ -34,6 +60,7 @@ namespace ProcessNote
                 {
                     case 1:
                         processhandler.ListProcess();
+                        Serializer.SerializeProcess(processhandler.allMyProcess);
                         break;
                     case 2:
                         processhandler.SearchById();
@@ -42,10 +69,9 @@ namespace ProcessNote
                         Process myProcess = processhandler.SearchById();
                         Console.Write("Enter your comment here: ");
                         string comment = Console.ReadLine();
-                        processhandler.MakeProcessObject(myProcess, comment);
                         break;
                     case 4:
-                        XmlHandler.WriteToXml();
+                        Serializer.SaveData(processhandler);
                         break;
                     case 5:
                         Environment.Exit(0);

@@ -8,27 +8,27 @@ namespace ProcessNote
 {
     class Serializer
     {
-        public static void SaveData(Initializer initializer)
+        public static void SaveData(ProcessHandler processhandler)
         {
-            SerializeUser(initializer.UserList);
+            SerializeProcess(processhandler.allMyProcess);
         }
 
-        public static void DeserializerUser(Initializer initializer)
+        public static void DeserializerProcess(ProcessHandler processhandler)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<MyProcess>));
 
             using (FileStream fs = File.OpenRead("..//..//..//allprocessdata.xml"))
             {
-                initializer.UserList = (List<MyProcess>)serializer.Deserialize(fs);
+                processhandler.allMyProcess = (List<MyProcess>)serializer.Deserialize(fs);
             }
         }
 
-        static void SerializeUser(List<MyProcess> userList)
+        public static void SerializeProcess(List<MyProcess> processList)
         {
-            using (Stream fs = new FileStream(@"C:\Users\Turi\source\repos\Szaki_kereso\User_data.xml", FileMode.Create, FileAccess.Write, FileShare.None))
+            using (Stream fs = new FileStream("..//..//..//allprocessdata.xml", FileMode.Create, FileAccess.Write, FileShare.None))
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(List<MyProcess>));
-                serializer.Serialize(fs, userList);
+                serializer.Serialize(fs, processList);
             }
         }
     }
