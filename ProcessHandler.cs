@@ -34,8 +34,13 @@ namespace ProcessNote
         {
             processLogger.UserInput("Give me the process Id you want to comment : ");
             int userInputId = Convert.ToInt32(Console.ReadLine());
-            IEnumerable<MyProcess> confirmprocess = allMyProcess.Where(process => process.ItemId == userInputId);
-            confirmprocess = (List<MyProcess>)confirmprocess;
+            var confirmprocess = allMyProcess.Where(process => process.ItemId == userInputId);
+            processLogger.UserInput("Give me the comment : ");
+            string comment = Console.ReadLine();
+            foreach( var element in confirmprocess)
+            {
+                element.Comment = comment;
+            }
         }
 
         public Process SearchById()
