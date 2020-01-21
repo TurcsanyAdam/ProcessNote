@@ -7,8 +7,15 @@ namespace ProcessNote
         static ConsoleLogger cl = new ConsoleLogger();
         static void Main(string[] args)
         {
-            MenuHandler menu = new MenuHandler(cl);
-            menu.StartMenu();
+            try
+            {
+                MenuHandler menu = new MenuHandler(cl);
+                menu.StartMenu();
+            }
+            catch(Exception ex)
+            {
+                cl.Error(ex.Message);
+            }
             
 
         }

@@ -16,19 +16,32 @@ namespace ProcessNote
         public static void DeserializerProcess(ProcessHandler processhandler)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<MyProcess>));
-
-            using (FileStream fs = File.OpenRead("..//..//..//allprocessdata.xml"))
+            if (File.Exists("..//..//..//allprocessdata.xml"))
             {
-                processhandler.allMyProcess = (List<MyProcess>)serializer.Deserialize(fs);
+                using (FileStream fs = File.OpenRead("..//..//..//allprocessdata.xml"))
+                {
+                    processhandler.allMyProcess = (List<MyProcess>)serializer.Deserialize(fs);
+                }
+            }
+            else
+            {
+                throw new FileNotFoundException("This file does not exist");
             }
         }
 
         public static void SerializeProcess(List<MyProcess> processList)
         {
-            using (Stream fs = new FileStream("..//..//..//allprocessdata.xml", FileMode.Create, FileAccess.Write, FileShare.None))
+            if (File.Exists("..//..//..//allprocessdata.xml"))
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(List<MyProcess>));
-                serializer.Serialize(fs, processList);
+                using (Stream fs = new FileStream("..//..//..//allprocessdata.xml", FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(List<MyProcess>));
+                    serializer.Serialize(fs, processList);
+                }
+            }
+            else
+            {
+                throw new FileNotFoundException("This file does not exist");
             }
         }
     }
