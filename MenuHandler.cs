@@ -75,6 +75,7 @@ namespace ProcessNote
                     case 5:
                         Environment.Exit(0);
                         break;
+                    default: throw new ArgumentException("This is an invalid argument");
                 }
             }
         }

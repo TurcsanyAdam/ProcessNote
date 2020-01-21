@@ -33,23 +33,38 @@ namespace ProcessNote
         public void CommentAProcess()
         {
             processLogger.UserInput("Give me the process Id you want to comment : ");
-            int userInputId = Convert.ToInt32(Console.ReadLine());
-            var confirmprocess = allMyProcess.Where(process => process.ItemId == userInputId);
-            processLogger.UserInput("Give me the comment : ");
-            string comment = Console.ReadLine();
-            foreach( var element in confirmprocess)
+            bool userInputId = Int32.TryParse(Console.ReadLine(), out int inputId);
+
+            if (userInputId)
             {
-                element.Comment = comment;
+                var confirmprocess = allMyProcess.Where(process => process.ItemId == inputId);
+                processLogger.UserInput("Give me the comment : ");
+                string comment = Console.ReadLine();
+                foreach (var element in confirmprocess)
+                {
+                    element.Comment = comment;
+                }
+            }
+            else
+            {
+                throw new ArgumentException("Invalid argument");
             }
         }
 
         public Process SearchById()
         {
             processLogger.Info("Give me the Id: ");
-            int searchedId = Convert.ToInt32(Console.ReadLine());
-            Process searchedProcess = Process.GetProcessById(searchedId);
-            processLogger.Info($" ID = {searchedProcess.Id} Name = {searchedProcess.ProcessName}");
-            return searchedProcess;
+            bool searchedIdBool = Int32.TryParse(Console.ReadLine(), out int searchedId );
+            if (searchedIdBool)
+            {
+                Process searchedProcess = Process.GetProcessById(searchedId);
+                processLogger.Info($" ID = {searchedProcess.Id} Name = {searchedProcess.ProcessName}");
+                return searchedProcess;
+            }
+            else
+            {
+                throw new ArgumentException("Invalid argument");
+            }
         }
 
 
