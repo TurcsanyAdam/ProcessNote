@@ -8,8 +8,6 @@ namespace ProcessNote
     class MenuHandler
     {
         private Ilogger MhLogger;
-        private List<MyProcess> allprocess;
-
         public MenuHandler(Ilogger logger)
         {
             MhLogger = logger;
@@ -17,6 +15,7 @@ namespace ProcessNote
 
         public void StartMenu()
         {
+            Console.Clear();
             while (true)
             {
                 string menu =
@@ -43,12 +42,12 @@ namespace ProcessNote
         }
         public void MenuRunningProcess()
         {
-
+            Console.Clear();
             ProcessHandler processhandler = new ProcessHandler(MhLogger);
             while (true)
             {
                 string menu =
-                "\n1 - List all running processes\n" +
+                "1 - List all running processes\n" +
                 "2 - Searh process by PID\n" +
                 "3 - Comment process by PID\n" +
                 "4 - Save all info to XML\n" +
@@ -81,14 +80,15 @@ namespace ProcessNote
 
         public void MenuWithXML()
         {
-
+            Console.Clear();
+            MhLogger.Info("You are now working with offline!");
             ProcessHandler processhandler = new ProcessHandler(MhLogger);
 
             Serializer.DeserializerProcess(processhandler);
             while (true)
             {
                 string menu =
-                "\n1 - List all processes from XML\n" +
+                "1 - List all processes from XML\n" +
                 "2 - Searh process by PID\n" +
                 "3 - Comment process by PID\n" +
                 "4 - Save all info to XML\n" +
