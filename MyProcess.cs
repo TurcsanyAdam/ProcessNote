@@ -40,7 +40,7 @@ namespace ProcessNote
         {
             StringBuilder sb = new StringBuilder();
             sb.Append($"id = {ItemId}, Name = {ItemName}, Cpu Usage = {CpuUsage.TotalMilliseconds}, Memory usage = {MemoryUsage / 1024}Kb," +
-                      $"Running Time = { RunnigTime.TotalMilliseconds}, Start Time = {StartTime}, Thread(s) = {ThreadCount}");
+                      $"Running Time = { RunnigTime.TotalMilliseconds}, Start Time = {StartTime}, Thread(s) = {ThreadCount}, Comment = {Comment}");
             return sb.ToString();
         }
 
