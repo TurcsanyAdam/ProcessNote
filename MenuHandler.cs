@@ -30,9 +30,10 @@ namespace ProcessNote
                 switch (userChocie)
                 {
                     case 1:
-                        Menu();
+                        MenuRunningProcess();
                         break;
                     case 2:
+                        MenuWithXML();
                         break;
                     case 3:
                         Environment.Exit(0);
@@ -40,7 +41,7 @@ namespace ProcessNote
                 }
             }
         }
-        public void Menu()
+        public void MenuRunningProcess()
         {
 
             ProcessHandler processhandler = new ProcessHandler(MhLogger);
@@ -66,9 +67,49 @@ namespace ProcessNote
                         processhandler.SearchById();
                         break;
                     case 3:
-                        Process myProcess = processhandler.SearchById();
-                        Console.Write("Enter your comment here: ");
-                        string comment = Console.ReadLine();
+                        processhandler.CommentAProcess();
+                        break;
+                    case 4:
+                        Serializer.SaveData(processhandler);
+                        break;
+                    case 5:
+                        Environment.Exit(0);
+                        break;
+                }
+            }
+        }
+
+        public void MenuWithXML()
+        {
+
+            ProcessHandler processhandler = new ProcessHandler(MhLogger);
+
+            Serializer.DeserializerProcess(processhandler);
+            while (true)
+            {
+                string menu =
+                "\n1 - List all processes from XML\n" +
+                "2 - Searh process by PID\n" +
+                "3 - Comment process by PID\n" +
+                "4 - Save all info to XML\n" +
+                "5 - Exit programme";
+                Console.WriteLine(menu);
+                Console.Write("Enter a number to navigate the menu: ");
+                int userChocie = int.Parse(Console.ReadLine());
+
+                switch (userChocie)
+                {
+                    case 1:
+                        foreach(MyProcess myProcess in processhandler.allMyProcess)
+                        {
+                            MhLogger.Info(myProcess.ToString());
+                        }
+                        break;
+                    case 2:
+                        processhandler.SearchById();
+                        break;
+                    case 3:
+                        processhandler.CommentAProcess();
                         break;
                     case 4:
                         Serializer.SaveData(processhandler);
