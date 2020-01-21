@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace ProcessNote
@@ -36,6 +37,10 @@ namespace ProcessNote
                         processhandler.SearchById();
                         break;
                     case 3:
+                        Process myProcess = processhandler.SearchById();
+                        Console.Write("Enter your comment here: ");
+                        string comment = Console.ReadLine();
+                        processhandler.MakeProcessObject(myProcess, comment);
                         break;
                     case 4:
                         XmlHandler.WriteToXml();
