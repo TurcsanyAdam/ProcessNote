@@ -9,7 +9,7 @@ namespace ProcessNote
     class ProcessHandler
     {
         private Ilogger processLogger;
-
+        public List<MyProcess> allMyProcess { get; private set; }
         public ProcessHandler(Ilogger ProcessLogger)
         {
             processLogger = ProcessLogger;
@@ -23,14 +23,17 @@ namespace ProcessNote
                 if (item.Id != 0)
                 {
                     processLogger.Info($"id = {item.Id} Name = {item.ProcessName}");
+                    MyProcess myprocess = new MyProcess(item.Id, item.ProcessName, item.TotalProcessorTime, item.WorkingSet64
+                                                , item.UserProcessorTime, item.StartTime, item.Threads.Count, "");
+                    allMyProcess.Add(myprocess);
                 }
             }
         }
-        public MyProcess MakeProcessObject(Process process,string comment)
+        public void CommentAProcess()
         {
-            MyProcess myprocess = new MyProcess(process.Id, process.ProcessName, process.TotalProcessorTime, process.WorkingSet64
-                                                , process.UserProcessorTime, process.StartTime, process.Threads.Count, comment);
-            return myprocess;
+            processLogger.UserInput("Give me the process Id you want to comment : ");
+            string nem;
+            
         }
 
         public Process SearchById()

@@ -7,6 +7,7 @@ namespace ProcessNote
     class MenuHandler
     {
         private Ilogger MhLogger;
+        private List<MyProcess> allprocess;
 
         public MenuHandler(Ilogger logger)
         {
@@ -14,6 +15,7 @@ namespace ProcessNote
         }
         public void Menu()
         {
+
             ProcessHandler processhandler = new ProcessHandler(MhLogger);
             while (true)
             {

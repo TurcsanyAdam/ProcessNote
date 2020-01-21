@@ -23,5 +23,14 @@ namespace ProcessNote
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine(message);
         }
+
+        public void UserInput(string message)
+        {
+            string input = "INPUT";
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write(input);
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.Write(message);
+        }
     }
 }

@@ -9,5 +9,6 @@ namespace ProcessNote
         void Info(string message);
 
         void Error(string message);
+        void UserInput(string message);
     }
 }
