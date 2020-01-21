@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Diagnostics;
+using System.Linq;
 
 
 namespace ProcessNote
@@ -32,8 +33,9 @@ namespace ProcessNote
         public void CommentAProcess()
         {
             processLogger.UserInput("Give me the process Id you want to comment : ");
-            string nem;
-            
+            int userInputId = Convert.ToInt32(Console.ReadLine());
+            IEnumerable<MyProcess> confirmprocess = allMyProcess.Where(process => process.ItemId == userInputId);
+            confirmprocess = (List<MyProcess>)confirmprocess;
         }
 
         public Process SearchById()
