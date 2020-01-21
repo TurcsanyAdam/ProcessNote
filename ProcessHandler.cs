@@ -10,7 +10,7 @@ namespace ProcessNote
     class ProcessHandler
     {
         private Ilogger processLogger;
-        public List<MyProcess> allMyProcess { get; private set; }
+        public List<MyProcess> allMyProcess = new List<MyProcess>();
         public ProcessHandler(Ilogger ProcessLogger)
         {
             processLogger = ProcessLogger;
