@@ -106,6 +106,7 @@ namespace ProcessNote
                         {
                             MhLogger.Info(myProcess.ToString());
                         }
+                        Console.ReadLine();
                         break;
                     case 2:
                         processhandler.SearchById();
