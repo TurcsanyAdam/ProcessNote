@@ -22,7 +22,7 @@ namespace ProcessNote
             {
                 if (item.Id != 0)
                 {
-                    processLogger.Info(item.Id + " " + item.ProcessName);
+                    processLogger.Info($"id = {item.Id} Name = {item.ProcessName}");
                 }
             }
         }
@@ -31,6 +31,15 @@ namespace ProcessNote
             MyProcess myprocess = new MyProcess(process.Id, process.ProcessName, process.TotalProcessorTime, process.WorkingSet64
                                                 , process.UserProcessorTime, process.StartTime, process.Threads.Count, comment);
             return myprocess;
+        }
+
+        public Process SearchById()
+        {
+            processLogger.Info("Give me the Id: ");
+            int searchedId = Convert.ToInt32(Console.ReadLine());
+            Process searchedProcess = Process.GetProcessById(searchedId);
+            processLogger.Info($" ID = {searchedProcess.Id} Name = {searchedProcess.ProcessName}");
+            return searchedProcess;
         }
 
 

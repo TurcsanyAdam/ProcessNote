@@ -6,8 +6,15 @@ namespace ProcessNote
 {
     class MenuHandler
     {
+        private Ilogger MhLogger;
+
+        public MenuHandler(Ilogger logger)
+        {
+            MhLogger = logger;
+        }
         public void Menu()
         {
+            ProcessHandler processhandler = new ProcessHandler(MhLogger);
             while (true)
             {
                 string menu =
@@ -23,8 +30,10 @@ namespace ProcessNote
                 switch (userChocie)
                 {
                     case 1:
+                        processhandler.ListProcess();
                         break;
                     case 2:
+                        processhandler.SearchById();
                         break;
                     case 3:
                         break;
