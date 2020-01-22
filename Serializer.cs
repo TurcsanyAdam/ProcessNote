@@ -8,7 +8,7 @@ namespace ProcessNote
 {
     class Serializer
     {
-        public static string filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "allprocessdata.xml")
+        public static string filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "allprocessdata.xml")
 ;
 
         public static void SaveData(ProcessHandler processhandler)
@@ -34,17 +34,11 @@ namespace ProcessNote
 
         public static void SerializeProcess(List<MyProcess> processList)
         {
-            if (File.Exists(filepath))
+
+            using (Stream fs = new FileStream(filepath, FileMode.Create, FileAccess.Write, FileShare.None))
             {
-                using (Stream fs = new FileStream(filepath, FileMode.Create, FileAccess.Write, FileShare.None))
-                {
-                    XmlSerializer serializer = new XmlSerializer(typeof(List<MyProcess>));
-                    serializer.Serialize(fs, processList);
-                }
-            }
-            else
-            {
-                throw new FileNotFoundException("This file does not exist");
+                XmlSerializer serializer = new XmlSerializer(typeof(List<MyProcess>));
+                serializer.Serialize(fs, processList);
             }
         }
     }

@@ -64,6 +64,8 @@ namespace ProcessNote
                         Serializer.SerializeProcess(processhandler.allMyProcess);
                         break;
                     case 2:
+                        Console.WriteLine(Serializer.filepath);
+
                         processhandler.SearchById();
                         break;
                     case 3:
@@ -110,6 +112,7 @@ namespace ProcessNote
                         break;
                     case 2:
                         processhandler.SearchById();
+
                         break;
                     case 3:
                         processhandler.CommentAProcess();
