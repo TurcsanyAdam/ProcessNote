@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProcessNote
+
+namespace ProcessNote_DLL
 {
     public interface Ilogger
     {

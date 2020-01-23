@@ -7,7 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace ProcessNote
+namespace ProcessNote_DLL
 {
     [Serializable()]
     public class MyProcess: ISerializable

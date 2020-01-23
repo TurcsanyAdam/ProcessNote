@@ -4,9 +4,9 @@ using System.IO;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace ProcessNote
+namespace ProcessNote_DLL
 {
-    class Serializer
+    public class Serializer
     {
         public static string filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "allprocessdata.xml")
 ;

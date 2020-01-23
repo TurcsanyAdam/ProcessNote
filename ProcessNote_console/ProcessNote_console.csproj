@@ -5,4 +5,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ProcessNote_DLL\ProcessNote_DLL.csproj" />
+  </ItemGroup>
+
 </Project>

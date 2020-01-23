@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using ProcessNote_DLL;
 
-namespace ProcessNote
+
+namespace ProcessNote_console
 {
     class MenuHandler
     {

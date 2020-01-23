@@ -1,6 +1,8 @@
 ﻿using System;
+using ProcessNote_DLL;
 
-namespace ProcessNote
+
+namespace ProcessNote_console
 {
     class Program
     {

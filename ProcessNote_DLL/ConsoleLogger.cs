@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using ProcessNote_DLL;
 
-namespace ProcessNote
+
+namespace ProcessNote_DLL
 {
-    class ConsoleLogger:Ilogger
+    public class ConsoleLogger:Ilogger
     {
         public void Info(string message)
         {

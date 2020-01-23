@@ -5,9 +5,9 @@ using System.Diagnostics;
 using System.Linq;
 
 
-namespace ProcessNote
+namespace ProcessNote_DLL
 {
-    class ProcessHandler
+    public class ProcessHandler
     {
         private Ilogger processLogger;
         public List<MyProcess> allMyProcess = new List<MyProcess>();
